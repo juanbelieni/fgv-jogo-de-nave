@@ -6,7 +6,7 @@
 - Jogo (1 fase)
 - Game over
 
-## Assets
+## Sprites
 
 - [Free Lunar Battle Pack](https://mattwalkden.itch.io/lunar-battle-pack)
 
