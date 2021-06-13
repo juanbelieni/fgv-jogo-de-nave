@@ -20,19 +20,21 @@ class GameScene:
             self.ship.move_up(dt)
         if keys[pygame.K_DOWN]:
             self.ship.move_down(dt)
-        if keys[pygame.K_SPACE] and len(self.shots) == 0 or keys[pygame.K_SPACE] and self.shots[-1].pos.x > 400:
+        if keys[pygame.K_SPACE] and (len(self.shots) == 0 or self.shots[-1].pos.x > 400):
             self.shots.append(Shot(self.ship, shot_speed, self.screen))
 
         self.background.step(dt)
         self.ship.step()
 
-        if len(self.shots) != 0 and self.shots[0].pos.x > self.screen.get_width():
-            self.shots.pop(0) # não usei OO do shot porque nao consegui expluir o elemento da lista, mudar isso
-        for i in range(len(self.shots)):
-            self.shots[i].move(dt)
+        for shot in self.shots:
+            if shot.pos.x > self.screen.get_width():
+                del shot # não usei OO do shot porque nao consegui expluir o elemento da lista, mudar isso
+            else:
+                shot.move_right(dt)
 
     def draw(self):
         self.background.draw()
-        self.ship.draw()
         for shot in self.shots:
             shot.draw()
+        self.ship.draw()
+        

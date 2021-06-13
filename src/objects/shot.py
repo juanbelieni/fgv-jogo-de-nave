@@ -10,12 +10,12 @@ class Shot(Object):
 
         super().__init__(ship.pos.x, ship.pos.y, 50, 50)
 
-    def move(self, dt):
+    def move_right(self, dt):
         self.pos.x += self.speed * dt
 
     def step(self):
         if self.pos.x > self.screen.get_width():
-            del self
+            del self # nao pode
 
     def draw(self):
         pygame.draw.rect(self.screen, (255, 255, 255), (self.pos.x, self.pos.y, 10, 10))
