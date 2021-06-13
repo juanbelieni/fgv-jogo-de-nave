@@ -18,6 +18,9 @@ class Ship(Object):
         # o construtor da classe Object
         super().__init__(50, height / 2, 50, 50) # aqui seta pos e size
 
+        self.red_ship_3 = pygame.transform.scale(sprites.red_ship_3, (int(self.size.x), int(self.size.y))) 
+
+
 
     def move_up(self):
         self.pos.y -= 1 * self.speed
@@ -32,8 +35,8 @@ class Ship(Object):
             self.pos.y = self.screen_height - self.size.y
 
     def draw(self):
-        pygame.draw.rect(self.screen, (255, 255, 255), (self.pos.x, self.pos.y, self.size.x, self.size.y))
-
+        #pygame.draw.rect(self.screen, (255, 255, 255), (self.pos.x, self.pos.y, self.size.x, self.size.y))
+        self.screen.blit(self.red_ship_3, (self.pos.x, self.pos.y))
 # metodo de mover pra cima
 # metodo de mover pra baixo
 # argumento que seta a velocidade
