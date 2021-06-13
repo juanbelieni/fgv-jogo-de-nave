@@ -1,4 +1,5 @@
 from pygame import Vector2
+import pygame.sprite
 
 
 class Object:
@@ -7,7 +8,7 @@ class Object:
         self.size = Vector2(width, height)
 
     def collides_with(self, other):
+        #self.collide(other)
         pass
-
     def move(self, delta) -> None:
         pass
