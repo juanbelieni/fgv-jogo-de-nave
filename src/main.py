@@ -10,7 +10,7 @@ from src.scenes.game import GameScene
 
 
 # Cria a tela do jogo, com o tamanho de 1200x800
-screen = pygame.display.set_mode((1200, 800))
+screen = pygame.display.set_mode((1000, 600))
 
 # Cria a cena do jogo
 game_scene = GameScene(screen)
