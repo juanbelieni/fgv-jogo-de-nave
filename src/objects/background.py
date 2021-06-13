@@ -16,8 +16,8 @@ class Background(Object):
         # Reajusta o tamanho do sprite do background, para que tenha o mesmo tamanho da tela
         self.sprite = pygame.transform.scale(sprites.background, (width, height))
 
-    def step(self):
-        self.pos.x -= 0.0005 * self.size.x
+    def step(self, dt):
+        self.pos.x -= self.size.x * dt * 0.2
 
         if self.pos.x < -self.size.x:
             # TODO: utilizar o método move, quando estiver implementado
