@@ -16,10 +16,12 @@ class Ship(Object):
         self.sprite = pygame.transform.scale(sprites.red_ship_3, (int(self.size.x), int(self.size.y)))
 
     def move_up(self, dt):
-        self.pos.y -= self.speed * dt
+        delta = pygame.Vector2(0, -self.speed * dt)
+        self.move(delta)
 
     def move_down(self, dt):
-        self.pos.y += self.speed * dt
+        delta = pygame.Vector2(0, +self.speed * dt)
+        self.move(delta)
 
     def step(self):
         if self.pos.y < 0:

@@ -11,7 +11,8 @@ class Shot(Object):
         super().__init__(ship.pos.x, ship.pos.y, 50, 50)
 
     def move_right(self, dt):
-        self.pos.x += self.speed * dt
+        delta = pygame.Vector2(self.speed*dt,0)
+        self.move(delta)
 
     def step(self):
         if self.pos.x > self.screen.get_width():
