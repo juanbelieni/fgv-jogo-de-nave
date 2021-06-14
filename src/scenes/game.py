@@ -1,3 +1,4 @@
+from scenes.shot import Shot
 from src.objects.background import Background
 from src.scenes.ship import Ship
 import pygame
@@ -7,6 +8,7 @@ class GameScene:
         self.screen = screen
         self.background = Background(self.screen)
         self.ship = Ship(screen, 2)
+        self.shot=Shot(screen,2)
 
     def step(self, events):
         keys = pygame.key.get_pressed()  #checking pressed keys
@@ -14,6 +16,10 @@ class GameScene:
             self.ship.move_up()
         if keys[pygame.K_DOWN]:
             self.ship.move_down()
+        if keys[pygame.K_SPACE]:
+            self.shot=Shot
+            print("saiu porra")
+
 
 
         self.background.step()
