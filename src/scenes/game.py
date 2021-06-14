@@ -26,9 +26,10 @@ class GameScene:
         self.background.step(dt)
         self.ship.step()
 
-        for shot in self.shots:
-            if shot.pos.x > self.screen.get_width():
-                del shot # não usei OO do shot porque nao consegui expluir o elemento da lista, mudar isso
+        clone_shots = self.shots.copy()
+        for shot in clone_shots:
+            if shot.remove():
+                self.shots.remove(shot)
             else:
                 shot.move_right(dt)
 

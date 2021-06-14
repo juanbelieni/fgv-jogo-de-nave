@@ -14,9 +14,15 @@ class Shot(Object):
         delta = pygame.Vector2(self.speed*dt,0)
         self.move(delta)
 
-    def step(self):
+    def remove(self):
         if self.pos.x > self.screen.get_width():
-            del self # nao pode
+            return True
+
+        #Futuramente podemos inserir a lista de inimigos como parâmetro
+        # for enemy in list_enemies:
+        #   if self.colides_with(enemy):
+        #       return True
+        return False
 
     def draw(self):
         pygame.draw.rect(self.screen, (255, 255, 255), (self.pos.x, self.pos.y, 10, 10))
