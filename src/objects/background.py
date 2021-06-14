@@ -17,11 +17,12 @@ class Background(Object):
         self.sprite = pygame.transform.scale(sprites.background, (width, height))
 
     def step(self, dt):
-        self.pos.x -= self.size.x * dt * 0.2
+        delta = pygame.Vector2(-0.2*self.size.x*dt,0)
+        self.move(delta)
 
         if self.pos.x < -self.size.x:
-            # TODO: utilizar o método move, quando estiver implementado
-            self.pos.x = 0
+            delta[0] = self.size.x
+            self.move(delta)
 
     def draw(self):
         self.screen.blit(self.sprite, (self.pos.x, self.pos.y))
