@@ -31,7 +31,7 @@ while running:
     dt = clock.tick() / 1000
 
     # Realiza os cálculos da parte lógica do jogo
-    game_scene.step(dt)
+    game_scene.update(dt)
 
     # Desenha na tela
     game_scene.draw()

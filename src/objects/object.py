@@ -1,5 +1,4 @@
 from pygame import Vector2
-import pygame.sprite
 
 
 class Object:
@@ -17,5 +16,8 @@ class Object:
             return False
         return True
 
-    def move(self, delta) -> None:
-        self.pos = self.pos + delta
+    def move_by(self, delta: Vector2):
+        self.pos += delta
+
+    def move_to(self, pos):
+        self.pos = Vector2(pos.x, pos.y)

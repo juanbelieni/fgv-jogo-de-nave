@@ -1,28 +1,21 @@
 import pygame
+from pygame import Vector2
 
 from src.objects.object import Object
-from src.sprites import sprites
+
+SHOT_SIZE = Vector2(10, 10)
+
 
 class Shot(Object):
-    def __init__(self, ship, speed, screen):
+    def __init__(self, screen, initial_pos, speed):
         self.speed = speed
         self.screen = screen
 
-        super().__init__(ship.pos.x, ship.pos.y, 50, 50)
+        super().__init__(initial_pos.x, initial_pos.y, SHOT_SIZE.x, SHOT_SIZE.y)
 
-    def move_right(self, dt):
-        delta = pygame.Vector2(self.speed*dt,0)
-        self.move(delta)
-
-    def remove(self):
-        if self.pos.x > self.screen.get_width():
-            return True
-
-        #Futuramente podemos inserir a lista de inimigos como parâmetro
-        # for enemy in list_enemies:
-        #   if self.colides_with(enemy):
-        #       return True
-        return False
+    def update(self, dt):
+        delta = Vector2(self.speed * dt, 0)
+        self.move_by(delta)
 
     def draw(self):
-        pygame.draw.rect(self.screen, (255, 255, 255), (self.pos.x, self.pos.y, 10, 10))
+        pygame.draw.rect(self.screen, (255, 255, 255), (self.pos.x, self.pos.y, self.size.x, self.size.y))

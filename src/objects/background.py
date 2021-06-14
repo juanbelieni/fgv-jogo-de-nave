@@ -1,4 +1,5 @@
 import pygame
+from pygame import Vector2
 
 from src.objects.object import Object
 from src.sprites import sprites
@@ -16,13 +17,13 @@ class Background(Object):
         # Reajusta o tamanho do sprite do background, para que tenha o mesmo tamanho da tela
         self.sprite = pygame.transform.scale(sprites.background, (width, height))
 
-    def step(self, dt):
-        delta = pygame.Vector2(-0.2*self.size.x*dt,0)
-        self.move(delta)
+    def update(self, dt):
+        delta = Vector2(-0.25 * self.size.x * dt, 0)
+        self.move_by(delta)
 
         if self.pos.x < -self.size.x:
-            delta[0] = self.size.x
-            self.move(delta)
+            pos = Vector2(0, 0)
+            self.move_to(pos)
 
     def draw(self):
         self.screen.blit(self.sprite, (self.pos.x, self.pos.y))

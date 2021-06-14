@@ -6,8 +6,8 @@ from src.sprites import sprites
 
 class Ship(Object):
     def __init__(self, screen, speed):
-        self.speed = speed
         self.screen = screen
+        self.speed = speed
 
         # Chama o super-construtor da classe Ship, que seria
         # o construtor da classe Object
@@ -17,17 +17,11 @@ class Ship(Object):
 
     def move_up(self, dt):
         delta = pygame.Vector2(0, -self.speed * dt)
-        self.move(delta)
+        self.move_by(delta)
 
     def move_down(self, dt):
         delta = pygame.Vector2(0, +self.speed * dt)
-        self.move(delta)
-
-    def step(self):
-        if self.pos.y < 0:
-            self.pos.y = 0
-        elif self.pos.y + self.size.y > self.screen.get_height():
-            self.pos.y = self.screen.get_height() - self.size.y
+        self.move_by(delta)
 
     def draw(self):
         self.screen.blit(self.sprite, (self.pos.x, self.pos.y))
