@@ -3,19 +3,20 @@ from pygame import Vector2
 import random 
 
 from src.objects.object import Object
-
+from src.sprites import sprites
 
 #criar a classe inimigo
 class Enemy(Object):
-    def __init__(self, screen, speed):
+    def __init__(self, screen, speed,typo):
         self.screen = screen
         self.speed = speed
-        self.type= random.randint(1,5)
+        self.type=typo
         self.direction=1
            
 #posição
         super().__init__(1000,0, 50, 50)
 
+        self.sprite = pygame.transform.scale(sprites.red_ship_3, (int(self.size.x), int(self.size.y)))
 
 #movimentos dos inimigos
    
@@ -39,7 +40,7 @@ class Enemy(Object):
 #spawn 
 
     def spawn(self):
-        delta=(0,randint(0,550))     
+        delta=pygame.Vector2(1050,random.randint(0,550))     
         self.move_to(delta)
 
     
