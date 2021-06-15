@@ -16,6 +16,7 @@ class Shot(Object):
     def update(self, dt):
         delta = Vector2(self.speed * dt, 0)
         self.move_by(delta)
+        
 
     def draw(self):
         pygame.draw.rect(self.screen, (255, 255, 255), (self.pos.x, self.pos.y, self.size.x, self.size.y))

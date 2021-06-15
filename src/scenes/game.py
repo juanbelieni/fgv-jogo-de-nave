@@ -1,4 +1,5 @@
 import pygame
+from objects.enemy import Enemy
 
 from src.objects.background import Background
 from src.objects.ship import Ship
@@ -11,6 +12,7 @@ class GameScene:
         self.background = Background(self.screen)
         self.ship = Ship(screen, 300)
         self.shots = []
+        self.enemy=[]
 
     def limit_ship_position(self):
         if self.ship.pos.y < 0:
@@ -56,3 +58,7 @@ class GameScene:
             shot.draw()
 
         self.ship.draw()
+#respawn
+    def respawn (self):
+        pass     
+        
