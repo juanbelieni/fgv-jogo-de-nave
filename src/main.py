@@ -5,9 +5,15 @@ import pygame
 sys.path.append('.')
 
 from scenes.game import GameScene
+from src.sprites import sprites
 
 # Inicia os módulos do pygame
 pygame.init()
+
+# Coloca o título e o icon 
+icon = sprites.icon
+pygame.display.set_caption("Jornada do rorô")
+pygame.display.set_icon(icon)
 
 # Cria a tela do jogo, com o tamanho de 1000x600
 screen = pygame.display.set_mode((1000, 600))
