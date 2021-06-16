@@ -1,8 +1,10 @@
 import pygame
+from objects.enemy import Enemy
 
 from src.objects.background import Background
 from src.objects.ship import Ship
 from src.objects.shot import Shot, SHOT_SIZE
+import random
 
 
 class GameScene:
@@ -11,6 +13,7 @@ class GameScene:
         self.background = Background(self.screen)
         self.ship = Ship(screen, 300)
         self.shots = []
+        self.enemies=[]
 
     def limit_ship_position(self):
         if self.ship.pos.y < 0:
@@ -31,6 +34,13 @@ class GameScene:
             if shot.pos.x > self.screen.get_width():
                 self.shots.remove(shot)
 
+    def enemy(self):
+        enemy=Enemy(self.screen,speed=200 ,typo=random.randint(1,5))   
+        enemy.spawn()
+        is_able_to_spawn= len(self.enemies)<=4 or 1000-self.enemies[-1].pos.x > 40
+        if is_able_to_spawn:
+            self.enemies.append(enemy)
+
     def update(self, dt):
         keys = pygame.key.get_pressed()
 
@@ -40,6 +50,10 @@ class GameScene:
             self.ship.move_down(dt)
         if keys[pygame.K_SPACE]:
             self.shoot()
+        if keys[pygame.K_x]:
+            self.enemy()
+
+
 
         self.background.update(dt)
         self.limit_ship_position()
@@ -47,12 +61,20 @@ class GameScene:
         for shot in self.shots:
             shot.update(dt)
 
-        self.remove_distant_shots()
+        for enemy in self.enemies:
+            enemy.update(dt)    
 
+        self.remove_distant_shots()
+    
+    
     def draw(self):
         self.background.draw()
 
         for shot in self.shots:
             shot.draw()
-
+        for enemy in self.enemies:
+            enemy.draw() 
         self.ship.draw()
+
+        
+        

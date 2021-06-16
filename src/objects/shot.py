@@ -18,6 +18,7 @@ class Shot(Object):
     def update(self, dt):
         delta = Vector2(self.speed * dt, 0)
         self.move_by(delta)
+        
 
     def draw(self):
         self.screen.blit(self.sprite, (self.pos.x, self.pos.y))
