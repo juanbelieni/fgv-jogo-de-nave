@@ -17,3 +17,6 @@
 - Nave move em uma velocidade constante
 - Nave move apenas no eixo _y_
 
+## Musiquinhas
+- [Musiquinhas gratis pra programadores pobres de dinheiro mas ricos em espírito](https://www.fesliyanstudios.com/royalty-free-music/downloads-c/8-bit-music/6)
+
