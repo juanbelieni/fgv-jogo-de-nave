@@ -4,7 +4,7 @@ import pygame
 
 sys.path.append('.')
 
-from scenes.game import GameScene
+from src.scenes.game import GameScene
 from src.sprites import sprites
 
 # Inicia os módulos do pygame
