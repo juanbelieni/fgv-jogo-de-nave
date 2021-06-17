@@ -1,14 +1,16 @@
 import sys
 
 import pygame
-
-sys.path.append('.')
-
-from scenes.game import GameScene
-from src.sprites import sprites
-
 # Inicia os módulos do pygame
 pygame.init()
+
+sys.path.append('.')
+from scenes.game import GameScene
+from src.sprites import sprites
+from src.sound_fx import sound_fx
+
+
+
 
 # Coloca o título e o icon 
 icon = sprites.icon
@@ -25,6 +27,8 @@ game_scene = GameScene(screen)
 # Controle se o jogo está sendo executado ou não
 running = True
 
+# Inicia musica previamente carregada em loop infinito
+pygame.mixer.music.play(loops = -1, start = 0.7)
 while running:
     pygame.display.update()
 
