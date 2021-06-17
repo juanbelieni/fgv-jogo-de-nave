@@ -5,6 +5,7 @@ import pygame
 sys.path.append('.')
 
 from scenes.game import GameScene
+from scenes.gameover import GameOver
 from src.sprites import sprites
 
 # Inicia os módulos do pygame
@@ -21,18 +22,20 @@ clock = pygame.time.Clock()
 
 # Cria a cena do jogo
 game_scene = GameScene(screen)
+game_over_scene = GameOver(screen)
 
 # Controle se o jogo está sendo executado ou não
 running = True
-
+     
 while running:
     pygame.display.update()
 
     events = pygame.event.get()
+
     for event in events:
         is_quitting = event.type == pygame.QUIT or (event.type == pygame.KEYUP and event.key == pygame.K_ESCAPE)
         if is_quitting:
-            running = False
+            running = False 
 
     dt = clock.tick() / 1000
 
