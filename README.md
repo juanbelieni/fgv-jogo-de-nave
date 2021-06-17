@@ -19,4 +19,5 @@
 
 ## Musiquinhas
 - [Musiquinhas gratis pra programadores pobres de dinheiro mas ricos em espírito](https://www.fesliyanstudios.com/royalty-free-music/downloads-c/8-bit-music/6)
+- [Sound fx](https://mixkit.co/free-sound-effects/game/)
 
