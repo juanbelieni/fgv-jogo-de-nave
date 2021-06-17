@@ -10,8 +10,6 @@ from src.sprites import sprites
 from src.sound_fx import sound_fx
 
 
-
-
 # Coloca o título e o icon 
 icon = sprites.icon
 pygame.display.set_caption("Jornada do rorô")
@@ -29,6 +27,7 @@ running = True
 
 # Inicia musica previamente carregada em loop infinito
 pygame.mixer.music.play(loops = -1, start = 0.7)
+
 while running:
     pygame.display.update()
 
