@@ -1,16 +1,15 @@
 import sys
 
 import pygame
-
-sys.path.append('.')
-
 # Inicia os módulos do pygame
 pygame.init()
 
+sys.path.append('.')
+
 from src.scenes.game import GameScene
 from src.scenes.gameover import GameOverScene
-
 from src.sprites import sprites
+from src.sound_fx import sound_fx
 
 # Coloca o título e o icon
 icon = sprites.icon
@@ -28,6 +27,10 @@ scene = GameScene(screen)
 running = True
 
 
+# Inicia musica previamente carregada em loop infinito
+pygame.mixer.music.play(loops = -1, start = 0.7)
+
+
 def handle_scene_event(ev, **args):
     global scene
 
@@ -35,7 +38,6 @@ def handle_scene_event(ev, **args):
         scene = GameScene(screen)
     elif ev == "GAME_OVER":
         scene = GameOverScene(screen)
-
 
 while running:
     pygame.display.update()

@@ -3,6 +3,7 @@ from pygame import Vector2
 
 from src.objects.object import Object
 from src.sprites import sprites
+from src.sound_fx import sound_fx
 
 SHOT_SIZE = Vector2(15, 15)
 
@@ -14,6 +15,7 @@ class Shot(Object):
 
         super().__init__(initial_pos.x, initial_pos.y, SHOT_SIZE.x, SHOT_SIZE.y)
         self.sprite = pygame.transform.scale(sprites.shot_3, (int(SHOT_SIZE.x), int(SHOT_SIZE.y)))
+        sound_fx.pew.play(maxtime = 400)
 
     def update(self, dt):
         delta = Vector2(self.speed * dt, 0)
