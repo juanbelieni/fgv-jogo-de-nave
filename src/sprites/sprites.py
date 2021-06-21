@@ -21,3 +21,6 @@ blue_ship_3 = pygame.image.load('src/sprites/ship/blue_ship_3.png')
 shot_1 = pygame.image.load('src/sprites/game_scene/shot_1.png')
 shot_2 = pygame.image.load('src/sprites/game_scene/shot_2.png')
 shot_3 = pygame.image.load('src/sprites/game_scene/shot_3.png')
+
+#Game Over
+game_over = pygame.image.load('src/sprites/game_scene/game_over.png')
