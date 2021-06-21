@@ -22,5 +22,11 @@ shot_1 = pygame.image.load('src/sprites/game_scene/shot_1.png')
 shot_2 = pygame.image.load('src/sprites/game_scene/shot_2.png')
 shot_3 = pygame.image.load('src/sprites/game_scene/shot_3.png')
 
-#Game Over
+# Enemy
+enemy_1 = pygame.image.load('src/sprites/enemy/enemy_1.png')
+enemy_2 = pygame.image.load('src/sprites/enemy/enemy_2.png')
+enemy_3 = pygame.image.load('src/sprites/enemy/enemy_3.png')
+enemy_4 = pygame.image.load('src/sprites/enemy/enemy_4.png')
+
+# Game Over
 game_over = pygame.image.load('src/sprites/game_scene/game_over.png')

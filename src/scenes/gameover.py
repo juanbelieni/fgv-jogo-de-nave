@@ -25,7 +25,7 @@ class GameOverScene(Scene):
     def draw(self):
         self.background.draw()
         s = pygame.Surface((1000, 600), pygame.SRCALPHA)
-        s.fill((0, 0, 0, 100))  # valor de alpha sobre a cor
+        s.fill((0, 0, 0, 150))  # valor de alpha sobre a cor
         self.screen.blit(s, (0, 0))
         self.screen.blit(self.image, (self.X - 20, self.Y))
         self.screen.blit(self.over_text, (315, 500))
