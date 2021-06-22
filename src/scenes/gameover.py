@@ -30,7 +30,7 @@ class GameOverScene(Scene):
         self.screen.blit(self.image, (self.X - 20, self.Y))
         self.screen.blit(self.over_text, (315, 500))
 
-    def update(self, dt):
+    def update(self, dt, _):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_RETURN]:
