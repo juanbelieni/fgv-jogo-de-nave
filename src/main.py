@@ -1,7 +1,7 @@
 import sys
 
 import pygame
-# Inicia os módulos do pygame
+
 pygame.init()
 
 sys.path.append('.')
@@ -9,7 +9,8 @@ sys.path.append('.')
 from src.scenes.game import GameScene
 from src.scenes.gameover import GameOverScene
 from src.sprites import sprites
-from src.sound_fx import sound_fx
+from src.scenes.choose_ship import ChooseShipScene
+# from src.sound_fx import sound_fx
 
 # Coloca o título e o icon
 icon = sprites.icon
@@ -21,23 +22,27 @@ screen = pygame.display.set_mode((1000, 600))
 clock = pygame.time.Clock()
 
 # Cria a cena do jogo
-scene = GameScene(screen)
+# scene = GameScene(screen)
+scene = ChooseShipScene(screen)
 
 # Controle se o jogo está sendo executado ou não
 running = True
 
 
 # Inicia musica previamente carregada em loop infinito
-pygame.mixer.music.play(loops = -1, start = 0.7)
+# pygame.mixer.music.play(loops = -1, start = 0.7)
 
 
 def handle_scene_event(ev, **args):
     global scene
 
     if ev == "RESTART":
-        scene = GameScene(screen)
+        scene = ChooseShipScene(screen)
     elif ev == "GAME_OVER":
         scene = GameOverScene(screen)
+    elif ev == "START_GAME":
+        scene = GameScene(screen, **args)
+
 
 while running:
     pygame.display.update()
@@ -52,7 +57,7 @@ while running:
     dt = clock.tick() / 1000
 
     # Realiza os cálculos da parte lógica do jogo
-    scene.update(dt)
+    scene.update(dt, events)
 
     # Desenha na tela
     scene.draw()

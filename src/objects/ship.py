@@ -5,7 +5,7 @@ from src.sprites import sprites
 
 
 class Ship(Object):
-    def __init__(self, screen, speed):
+    def __init__(self, screen, sprite, speed):
         self.screen = screen
         self.speed = speed
 
@@ -13,7 +13,7 @@ class Ship(Object):
         # o construtor da classe Object
         super().__init__(50, screen.get_height() / 2, 50, 50)
 
-        self.sprite = pygame.transform.scale(sprites.red_ship_3, (int(self.size.x), int(self.size.y)))
+        self.sprite = pygame.transform.scale(sprite, (int(self.size.x), int(self.size.y)))
 
     def move_up(self, dt):
         delta = pygame.Vector2(0, -self.speed * dt)

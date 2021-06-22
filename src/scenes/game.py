@@ -10,10 +10,11 @@ from src.scenes.scene import Scene
 
 
 class GameScene(Scene):
-    def __init__(self, screen):
+    def __init__(self, screen, game_config, ship_color):
         self.screen = screen
         self.background = Background(self.screen)
-        self.ship = Ship(screen, 350)
+        self.game_config = game_config
+        self.ship = Ship(screen, game_config["sprite"][ship_color], self.game_config["velocity"])
         self.shots = []
         self.enemies = []
 
@@ -27,12 +28,13 @@ class GameScene(Scene):
         pos = self.ship.pos + self.ship.size / 2 - SHOT_SIZE / 2
         shot = Shot(self.screen, initial_pos=pos, speed=600)
 
-        is_able_to_shoot = len(self.shots) == 0 or self.shots[-1].pos.x - self.ship.pos.x > 250
+        is_able_to_shoot = len(self.shots) == 0 or self.shots[-1].pos.x - self.ship.pos.x > self.game_config[
+            "shoot_distance"]
         if is_able_to_shoot:
             self.shots.append(shot)
 
     def spawn_enemy(self):
-        enemy = Enemy(self.screen, speed=randint(250, 350), what_enemy=randint(1,4))
+        enemy = Enemy(self.screen, speed=randint(250, 350), what_enemy=randint(1, 4))
 
         is_able_to_spawn = len(self.enemies) == 0 or self.screen.get_width() * 1.5 - self.enemies[-1].pos.x > 250
         if is_able_to_spawn:
@@ -51,7 +53,7 @@ class GameScene(Scene):
             if shot.pos.x > self.screen.get_width():
                 self.shots.remove(shot)
 
-    def update(self, dt):
+    def update(self, dt, _):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_UP]:
