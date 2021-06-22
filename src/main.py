@@ -13,7 +13,6 @@ from src.scenes.gameover import GameOverScene
 from src.sprites import sprites
 from src.scenes.choose_ship import ChooseShipScene
 from src.scenes.main_menu import MenuScene
-# from src.sound_fx import sound_fx
 
 # Coloca o título e o icon
 icon = sprites.icon
@@ -25,16 +24,14 @@ screen = pygame.display.set_mode((1000, 600))
 clock = pygame.time.Clock()
 
 # Cria a cena do jogo
-# scene = GameScene(screen)
-#scene = ChooseShipScene(screen)
 scene = MenuScene(screen)
 
 # Controle se o jogo está sendo executado ou não
 running = True
 
-
 # Inicia musica previamente carregada em loop infinito
-pygame.mixer.music.play(loops = -1, start = 0.7)
+pygame.mixer.music.play(loops=-1, start=0.7)
+
 
 def handle_scene_event(ev, **args):
     global scene
@@ -42,7 +39,7 @@ def handle_scene_event(ev, **args):
     if ev == "RESTART":
         scene = MenuScene(screen)
     if ev == "INSTRUCTIONS":
-            scene = InstructionsScene(screen)
+        scene = InstructionsScene(screen)
     if ev == "CREDITS":
         scene = CreditsScene(screen)
     elif ev == "CHOOSE_SHIP":
