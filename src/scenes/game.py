@@ -32,7 +32,7 @@ class GameScene(Scene):
             self.shots.append(shot)
 
     def spawn_enemy(self):
-        enemy = Enemy(self.screen, speed=randint(250, 350))
+        enemy = Enemy(self.screen, speed=randint(250, 350), what_enemy=randint(1,4))
 
         is_able_to_spawn = len(self.enemies) == 0 or self.screen.get_width() * 1.5 - self.enemies[-1].pos.x > 250
         if is_able_to_spawn:
