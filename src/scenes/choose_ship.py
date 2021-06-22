@@ -14,7 +14,7 @@ game_configs = {
         "lives": 5,
         "shoot_distance": 269.21,
         "velocity": 350,
-        "description": "Nave mais resistente, com 2 vidas extras",
+        "description": "Nave mais resistente com vidas extras",
         "sprite": {
             "red": sprites.red_ship_3,
             "blue": sprites.blue_ship_3,
@@ -36,7 +36,7 @@ game_configs = {
         "lives": 3,
         "shoot_distance": 210,
         "velocity": 350,
-        "description": "Nave mais furiosa, com o tiro 14,19% mais rápido",
+        "description": "Nave mais furiosa com tiros ligeiros",
         "sprite": {
             "red": sprites.red_ship_2,
             "blue": sprites.blue_ship_2,
@@ -53,6 +53,7 @@ class ChooseShipScene(Scene):
     def __init__(self, screen):
         self.screen = screen
         self.background = Background(self.screen)
+        self.font_name = 'src/Fonte_do_game.TTF'
 
         self.game_config_name = "resistant"
         self.ship_color = "red"
@@ -66,9 +67,9 @@ class ChooseShipScene(Scene):
         width, height = self.screen.get_size()
 
         description = game_configs[self.game_config_name]["description"]
-        text = font.render(description, True, (200, 200, 200))
-        pos = text.get_rect(center=(width / 2, 200))
-        self.screen.blit(text, pos)
+        self.draw_text(description, 20, width/2, 200)#text = font.render(description, True, (200, 200, 200))
+        #pos = text.get_rect(center=(width / 2, 200))
+        #self.screen.blit(text, pos)
 
         sprite = pygame.transform.scale(game_configs[self.game_config_name]["sprite"][self.ship_color],
                                         (int(SHIP_SIZE.x), int(SHIP_SIZE.y)))
@@ -93,3 +94,10 @@ class ChooseShipScene(Scene):
                     self.emit("START_GAME", game_config=game_configs[self.game_config_name], ship_color=self.ship_color)
 
         self.background.update(dt)
+
+    def draw_text(self, text, size, x, y):
+        font = pygame.font.Font(self.font_name, size)
+        text_surface = font.render(text, True, (200, 200, 200))
+        text_rect = text_surface.get_rect()
+        text_rect.center = (x,y)
+        self.screen.blit(text_surface,text_rect)
