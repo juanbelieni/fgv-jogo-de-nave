@@ -80,6 +80,7 @@ class GameScene(Scene):
             if enemy.pos.x < 0:
                 self.emit("GAME_OVER")
 
+
     def draw(self):
         self.background.draw()
 
