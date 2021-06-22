@@ -5,8 +5,10 @@ import pygame
 from src.objects.background import Background
 from src.objects.enemy import Enemy
 from src.objects.ship import Ship
+from src.objects.S2 import S2
 from src.objects.shot import Shot, SHOT_SIZE
 from src.scenes.scene import Scene
+
 
 
 class GameScene(Scene):
@@ -15,8 +17,14 @@ class GameScene(Scene):
         self.background = Background(self.screen)
         self.game_config = game_config
         self.ship = Ship(screen, game_config["sprite"][ship_color], self.game_config["velocity"])
+        
         self.shots = []
         self.enemies = []
+
+        self.S2 = []
+        lives = self.game_config["lives"]
+        for counter in range(1, lives + 1):
+            self.S2.append(S2(self.screen))
 
     def limit_ship_position(self):
         if self.ship.pos.y < 0:
@@ -78,7 +86,11 @@ class GameScene(Scene):
 
         for enemy in self.enemies:
             if enemy.pos.x < 0:
-                self.emit("GAME_OVER")
+                self.S2.pop(-1)
+                self.enemies.pop(0)
+
+        if len(self.S2) <= 0:
+            self.emit("GAME_OVER")
 
 
     def draw(self):
@@ -89,5 +101,7 @@ class GameScene(Scene):
 
         for enemy in self.enemies:
             enemy.draw()
+        for counter in range(1, len(self.S2)):
+            self.S2[counter].draw(counter)
 
         self.ship.draw()
