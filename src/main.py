@@ -32,7 +32,6 @@ running = True
 # Inicia musica previamente carregada em loop infinito
 # pygame.mixer.music.play(loops = -1, start = 0.7)
 
-
 def handle_scene_event(ev, **args):
     global scene
 
