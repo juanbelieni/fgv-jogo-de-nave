@@ -166,10 +166,10 @@ class CreditsScene(MenuScene):
 
         self.draw_text('DESENVOLVIDO POR', 35, self.mid_w, self.mid_h - 250)
         self.draw_text('Carlos Alberto de Souza Junior', 25, self.mid_w, self.mid_h - 100)
-        self.draw_text('Juan Beliene de Araujo', 25, self.mid_w, self.mid_h - 60)
-        self.draw_text('Lucas Westfal', 25, self.mid_w, self.mid_h - 20)
-        self.draw_text('Nicole dos Santos de Souza', 25, self.mid_w, self.mid_h + 20)
-        self.draw_text('Pedro Henrique de Souza', 25, self.mid_w, self.mid_h + 60)
+        self.draw_text('Juan Belieni de Castro Araujo', 25, self.mid_w, self.mid_h - 60)
+        self.draw_text('Nicole dos Santos de Souza', 25, self.mid_w, self.mid_h - 20)
+        self.draw_text('Pedro Henrique de Souza', 25, self.mid_w, self.mid_h + 20)
+        self.draw_text('Lucas Westfal', 25, self.mid_w, self.mid_h + 60)
         self.draw_text('Pressione Backspace para voltar', 15, self.mid_w, self.height - 20)
 
     def update(self, dt, events):

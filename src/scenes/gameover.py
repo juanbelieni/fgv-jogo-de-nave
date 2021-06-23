@@ -39,3 +39,4 @@ class GameOverScene(Scene):
         text_rect = text_surface.get_rect()
         text_rect.center = (x,y)
         self.screen.blit(text_surface,text_rect)
+
