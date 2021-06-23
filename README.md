@@ -1,5 +1,11 @@
 # Jogo de Nave
 
+## Como executar
+
+```bash
+python3 src/main.py
+```
+
 ## Telas
 
 - Montar a nave
