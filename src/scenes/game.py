@@ -1,6 +1,7 @@
 from random import randint
 
 import pygame
+from pygame.constants import K_p
 
 from src.objects.background import Background
 from src.objects.enemy import Enemy
@@ -17,13 +18,14 @@ class GameScene(Scene):
         self.background = Background(self.screen)
         self.game_config = game_config
         self.ship = Ship(screen, game_config["sprite"][ship_color], self.game_config["velocity"])
+        self.pause = False
         
         self.shots = []
         self.enemies = []
 
         self.S2 = []
         lives = self.game_config["lives"]
-        for counter in range(1, lives + 1):
+        for counter in range(lives + 1):
             self.S2.append(S2(self.screen))
 
     def limit_ship_position(self):
@@ -61,8 +63,13 @@ class GameScene(Scene):
             if shot.pos.x > self.screen.get_width():
                 self.shots.remove(shot)
 
-    def update(self, dt, _):
+    def update(self, dt, events):
         keys = pygame.key.get_pressed()
+        for event in events:
+            if event.type == pygame.KEYDOWN and event.key == K_p:
+                self.pause = not self.pause
+        if self.pause:
+            return None
 
         if keys[pygame.K_UP]:
             self.ship.move_up(dt)
@@ -87,9 +94,9 @@ class GameScene(Scene):
         for enemy in self.enemies:
             if enemy.pos.x < 0:
                 self.S2.pop(-1)
-                self.enemies.pop(0)
+                self.enemies.remove(enemy)
 
-        if len(self.S2) <= 0:
+        if len(self.S2) <= 1:
             self.emit("GAME_OVER")
 
 
@@ -105,3 +112,18 @@ class GameScene(Scene):
             self.S2[counter].draw(counter)
 
         self.ship.draw()
+
+        if self.pause:
+            s = pygame.Surface((1000, 600), pygame.SRCALPHA)
+            s.fill((0, 0, 0, 150))  # valor de alpha sobre a cor
+            self.screen.blit(s, (0, 0))
+
+
+            text = "JOGO PAUSADO * APERTE P PARA DESPAUSAR"
+            font = pygame.font.Font('src/Fonte_do_game.TTF', 20)
+            text_surface = font.render(text, True, (255, 255, 255))
+            text_rect = text_surface.get_rect()
+            text_rect.center = (self.screen.get_width()/2,self.screen.get_height()/2)
+            self.screen.blit(text_surface,text_rect)
+
+            
