@@ -17,9 +17,11 @@ class GameScene(Scene):
         self.background = Background(self.screen)
         self.game_config = game_config
         self.ship = Ship(screen, game_config["sprite"][ship_color], self.game_config["velocity"])
-        
+        self.font_name = 'src/Fonte_do_game.TTF'
+
         self.shots = []
         self.enemies = []
+        self.score = 0
 
         self.S2 = []
         lives = self.game_config["lives"]
@@ -52,6 +54,7 @@ class GameScene(Scene):
         for enemy in self.enemies:
             for shot in self.shots:
                 if shot.collides_with(enemy):
+                    self.score += 1
                     self.enemies.remove(enemy)
                     self.shots.remove(shot)
                     break
@@ -92,6 +95,13 @@ class GameScene(Scene):
         if len(self.S2) <= 0:
             self.emit("GAME_OVER")
 
+    def draw_text(self, text, size, x, y):
+        font = pygame.font.Font(self.font_name, size)
+        text_surface = font.render(text, True, (255, 255, 255))
+        text_rect = text_surface.get_rect()
+        text_rect.center = (x,y)
+        self.screen.blit(text_surface,text_rect)
+
 
     def draw(self):
         self.background.draw()
@@ -105,3 +115,5 @@ class GameScene(Scene):
             self.S2[counter].draw(counter)
 
         self.ship.draw()
+
+        self.draw_text(f"SCORE {self.score}", 40, 800, 20)
