@@ -8,8 +8,11 @@ python3 src/main.py
 
 ## Telas
 
+- Tela inicial
+- Tela de instruções
+- Tela de créditos
 - Montar a nave
-- Jogo (1 fase)
+- Jogo
 - Game over
 
 ## Sprites
@@ -18,10 +21,10 @@ python3 src/main.py
 
 ## Regras
 
-- O jogador escolhe uma nave para jogar, variando velocidade, resistência e dano do tiro
-- Cada nave possui 3 cores diferentes
-- Nave move em uma velocidade constante
-- Nave move apenas no eixo _y_
+- O jogador escolhe uma nave para jogar, variando velocidade da nave, quantidade de vidas e cadência do tiro.
+- Cada nave possui 3 cores diferentes.
+- Nave move em uma velocidade constante.
+- Nave move apenas no eixo _y_.
 
 ## Musiquinhas
 - [Musiquinhas gratis pra programadores pobres de dinheiro mas ricos em espírito](https://www.fesliyanstudios.com/royalty-free-music/downloads-c/8-bit-music/6)
